@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+    <title>html validation </title>
+    <style>type="text/css">
+    fieldset{
+        border:1px solid #f5a;
+        margin-top: 20px;
+
+    }
+    legend{
+        border:1px solid #5a5;
+
+    }
+    .group{
+        margin-bottom: 10px;
+        border: 1px solid #fa2;
+        padding: 10px;
+        width: 70%;
+
+    }
+    .group label{
+        width: 100px;
+        display: inline-block;
+
+    }
+    .group input,select{
+        width: 75%;
+        height: 20px;
+
+    }
+    .group input[type=radio],input[type=checkbox]{
+        width: 5%;
+
+    }
+    input[type=submit]{
+        border:none;
+        background-color: #23a;
+        padding: 20px;
+        color: #fff;
+        width: 15%;
+    }
+    input[type=reset],input[type=submit]{
+        border: none;
+        background-color: #f50;
+        padding: 10px;
+        color: #fff;
+        width: 100px;
+        height: 50px;
+
+    }
+    .error_massage{
+        color: #f00;
+
+    }
+
+
+    </style>
+    <script type="text/javascript">
+        function validation(){
+            var error= 0;
+            var name= document.signup.name.value;
+            var username=document.signup.username.value;
+            var password= document.signup.password.value;
+            var repassword= document.signup.password.value;
+            var phone= document.signup.phone.value;
+            var email= document.signup.email.value;
+            var year= document.signup.year.value;
+            var month= document.signup.month.value;
+            var day= document.signup.day.value;
+            var country= document.signup.country.value;
+            var gender= document.signup.gender.value;
+
+            var msg= '';
+            /* start validation for name*/
+            if(name.trim()==''){
+                document.getElementById('err_name').innerHTML="enter name";
+                error++;
+                        }
+                        else{
+                            document.getElementById('err_name').innerHTML="";
+                            msg+= 'Name is '+name+' <br>';
+
+                        }
+                        if (username.trim()==''){
+                            document.getElementById('err_username').innerHTML="enter username";
+                            error++;
+
+
+                        }
+                        else{
+                            document.getElementById('err_username').innerHTML="";
+                            msg+='username is '+ username +'<br>';
+
+                        }
+                    }
+                    /* start validation for name*/
+                    /* start validation for password*/
+                    if (password.trim()==''){
+                        document.getElementById('err_password').innerHTML="enter password";
+                        error++;
+
+                    }
+                    else{
+                        document.getElementById('err-repasswprd').innerHTML="";
+
+                    }
+                    if (repassword.trim()==''){ 
+                        document.getElementById('err_repassword').innerHTML="enter repassword";
+                        error++;
+
+
+                    }
+                    else{
+                        document.getElementById('err_repasswprd').innerHTML="";
+
+                    }
+                    if(password != repassword){
+                        document.getElementById('err_repassword').innerHTML="password not matched";
+                        error++;
+
+                    }
+                    else{
+                        document.getElementById('err_repassword').innerHTML="";
+                        msg+= 'password is '+ password+'<br>';
+
+
+                    }
+                    /* end validation for password*/
+                    /* start validation for phone*/
+                    var phonepattern=/^([0-9]{10})$/;
+                    if (phone.trim()==''){
+                        document.getElementById('err_phone').innerHTML="Enter Phone";
+                        error++;
+
+                    }
+                    else if (! phonepattern.test(phone)){
+                        document.getElementById('err_phone').innerHTML="phone must be 10 digits";
+                        error++;
+
+                    }
+                    else if  {
+                        (!phonepattern.test (phone)){
+                            document.getElementById('err_phone').innerHTML="";
+                            msg+='phone is '+phone+ '<br>'
+
+                        }
+                    /* end validation for phone*/
+                    /* start validation for email*/
+                    var  emailpattern= /^[a-zA-Z0-9_\.\-]+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+                    if(email.trim()==''){
+                        document.getElementById('err_email').innerHTML="enter valid email";
+                        error++;
+                      }
+                      else{
+                        document.getElementById('err_email').innerHTML="";
+                        msg+='email is' + email +'<br>';
+
+                      }
+                      /* end validation for email*/
+                      /*start validation for DOB*/
+                      var yearpattern= /^([0-9]{4})$/;
+                      var monthpattern= /^([0-9]{2})$/;
+                      if (year.trim()==''|| month. trim()==''|| day. trim()=='')
+                      {
+                        document.getElementById('err_dob').innerHTML="enter full date of birth";
+                        error++;
+                
+                      }
+                      else if (!yearpattern.test(year))
+                      {
+                        document. getElementById('err_dob').innerHTML="enter valid year";
+                        error++;
+
+                      }
+                      else if(!monthdaypattern.test(day)){
+                        Document.getElementById('err_dob').innerHTML="enter valid date";
+                    error++;
+                    
+                      }
+                      else{
+                        document.getElementById('err_dob').innerHTML="";
+                        msg+='dob is '+year+'/'+month+'/'+day+'<br>';
+
+
+                      }
+                      /* end validation for DOb*/
+                      /*satart validation for country*/
+                      if(document.signup.country.selectedindex==0){
+                        document.getElementById('err_country').innerHTML="select country";
+                        error++;
+
+                      }
+                      else{
+                        document.getElementById('err_country').innerHTML="";
+                        msg+='country is' + country +'<br>';
+
+                      }
+                      /* end validation for country*/
+                      /* start validation for gender*/
+                      if(document.signup.gender[0].checked==false &&
+                        document.signup.gender[1].checked==false)
+                        document.getElementById('err_gender').innerHTML="select gender";
+                        error++;   
+                    }{document.getElementById('err_gender').innerHTML="";
+                    msg+='gender is '+gender+ '<br>';}
+                    /* end validation for gender*/
+                    /* start validation for cheakbox*/
+                    if (document.signup.term.checked==false){
+                        document.getElementById('err_term').innerHTML="please clicl on accept term and condition";
+                        error++;
+
+                    }
+                    if(error>0){
+                        return false;
+
+                    }
+                    else {
+                        document.write(msg);
+
+                    }
+                    </script>
+                    </head>
+                    <body>
+                        <h1> form validation using javascript</h1>
+                        <form action="#" method="post" onsubmit="return validateForm()"name="signup"></form>
+                        <fieldset>
+                            <legent> Registration Form</legent>
+                            <div class="group">
+                                <label>Name</label>
+                                <input type="text" name="username">
+                                <span id="err_password" class="error_massage"></span>
+
+                            </div>
+                            <div class="group">
+                                <label>password</label>
+                                <input type="password" name="repassword">
+                                <span id=" err_phonr" class="error_massage"></span>   
+                            </div>
+                            <div calss="group">
+                                <label> confirm password</label>
+                                <input type="password" name="repassword">
+                                <span id="err_repassword" clasa="error_massage"></span>
+</div>
+<div class="group">
+    <label>phone</label>
+    <input type="text" name="phone">
+    <span id="err_phone" class="error_massage"></span>
+
+</div>
+<div class="group">
+    <label>email</label>
+    <input type="text" name="email">
+    <span id="err_email" class="error_massage"></span>
+
+</div>
+<div class="group" id="dob_group">
+    <label>DOB</label>
+    <input type="text" name="year">
+    <input type="text" name="month">
+    <input type="text" name="day">
+    <span id="err_dob" class="error_massage"></span>
+
+</div>
+<div class="group">
+    <label>country</label>
+    <select name="country">
+    <option value="">select country</option>
+    <option value="Nepal">Nepal</option>
+    <option value="chaina">India</option>
+    <option value="india">Chaina</option>
+</select>
+<span id="err_country" class="error_massage"></span>    
+   
+</div>
+<div class="group">
+    <label>Gender</label>
+    <input type="radio" name="gender" value="male">male 
+    <input type="radio" name="gender" value="Female">Female 
+    <span id="err_gender" class="error_massage"></span>
+</div>
+<div class="group">
+    <label>Faculty</label>
+    <input type="checkbox" name="Faculty[]" value="BIM">BIM
+    <input type="checkbox" name="Faculty[]" value="csit">csit
+    <input type="checkbox" name="Faculty[]" value="bsw">bsw
+    <span id="err_faculty" class="error_massage"></span>
+</div>
+<div class="group">
+    <input type="checkbox" name="term" value="i accept term and condition">i accept term and condition
+    <span id="err_term" class="error_massage"></span>
+</div>
+<div class="group" id="btn_group">
+    <input type="submit" value="signup">
+    <input type="reset" value="clear form">
+
+</div>
+</form>
+
+
+
+                            
+                        </fieldset>
+                    
+                  </script>
+
+
+</head>
+
+    
+</body>
+</html>
